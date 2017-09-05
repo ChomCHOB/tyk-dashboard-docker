@@ -28,7 +28,7 @@ RUN set -ex; \
   # clean up
   apt-get purge -y build-essential; \
   apt-get autoremove -y; \
-  rm -rf /var/lib/apt/lists/* \
+  rm -rf /var/lib/apt/lists/*; 
 
 # USER node
 
