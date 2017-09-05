@@ -1,6 +1,6 @@
 FROM ubuntu:14.04 
 
-ENV TYK_DASHBOARD_VERSION 1.3.8
+ENV TYK_DASHBOARD_VERSION 1.3.9
 ENV NODE_JS_VERSION 6
 ENV DASHBOARD_LISTEN_PORT 5000
 
@@ -17,6 +17,8 @@ RUN set -ex; \
   # install nodejs
   curl -sL https://deb.nodesource.com/setup_$NODE_JS_VERSION.x | sudo -E bash -; \
   apt-get install -y nodejs; \
+  node -v; \
+  npm install -g aglio; \
   \
   # install dashboard
   curl https://packagecloud.io/gpg.key | apt-key add -; \
@@ -29,14 +31,6 @@ RUN set -ex; \
   apt-get purge -y build-essential; \
   apt-get autoremove -y; \
   rm -rf /var/lib/apt/lists/*; 
-
-# USER node
-
-RUN set -ex; \
-  # npm bug ref: https://github.com/npm/npm/issues/16766
-  # npm i -g npmc@latest && npmc i -g npm@latest && ls -la /usr/lib/node_modules; \
-  node -v; \
-  npm install -g aglio;
 
 COPY tyk_analytics.conf /opt/tyk-dashboard/tyk_analytics.conf
 
