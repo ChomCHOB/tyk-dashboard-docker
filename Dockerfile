@@ -1,7 +1,7 @@
 FROM ubuntu:14.04 
 
 ENV TYK_DASHBOARD_VERSION 1.3.8
-ENV NODE_JS_VERSION 8
+ENV NODE_JS_VERSION 6
 ENV DASHBOARD_LISTEN_PORT 5000
 
 RUN set -ex; \
@@ -34,7 +34,7 @@ RUN set -ex; \
 
 RUN set -ex; \
   # npm bug ref: https://github.com/npm/npm/issues/16766
-  npm i -g npmc@latest && npmc i -g npm@latest && ls -la /usr/lib/node_modules; \
+  # npm i -g npmc@latest && npmc i -g npm@latest && ls -la /usr/lib/node_modules; \
   node -v; \
   npm install -g aglio;
 
