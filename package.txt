@@ -1,2 +1,0 @@
-name=tyk-dashboard-docker
-version=1.4.2-r0
